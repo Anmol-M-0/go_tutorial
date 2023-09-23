@@ -1,0 +1,13 @@
+from golang
+
+RUN mkdir -p /app/{bin,src}
+
+COPY . /app/src
+
+RUN cd /app/src && go mod tidy
+
+RUN cd /app/src && go build -o /app/bin/main main.go
+
+RUN /app/bin/main
+
+CMD [ "/app/bin/main" ]

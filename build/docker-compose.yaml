@@ -1,0 +1,4 @@
+services:
+  app:
+    image: go_tutorial:latest
+    entrypoint: /app/bin/main
