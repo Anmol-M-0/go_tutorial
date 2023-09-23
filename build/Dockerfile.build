@@ -8,6 +8,4 @@ RUN cd /app/src && go mod tidy
 
 RUN cd /app/src && go build -o /app/bin/main main.go
 
-RUN cd /app/src && /app/bin/main
-
-CMD [ "/app/bin/main" ]
+CMD [ "cd /app/src && /app/bin/main" ]
