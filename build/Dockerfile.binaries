@@ -1,4 +1,4 @@
-FROM golang as base
+from golang as app
 
 RUN mkdir -p /app/{bin,src}
 
@@ -8,6 +8,9 @@ RUN cd /app/src && go mod tidy
 
 RUN cd /app/src && go build -o /app/bin/main main.go
 
-RUN cd /app/src && /app/bin/main
+RUN /app/bin/main
 
 CMD [ "/app/bin/main" ]
+
+FROM scratch AS binaries
+COPY --from=app /app/bin /
